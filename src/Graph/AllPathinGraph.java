@@ -1,39 +1,32 @@
 package Graph;
 
-
 import java.io.*;
 import java.util.*;
 
-public class HasPath {
-
-
-
-    static class Pair{
-        int to;
-        int psf;
-
-    }
+public class AllPathinGraph {
     static class Edge {
-
         int src;
         int nbr;
         int wt;
 
-        Edge(int src, int nbr, int wt){
+        Edge(int src, int nbr, int wt) {
             this.src = src;
             this.nbr = nbr;
             this.wt = wt;
         }
     }
+
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
         int vtces = Integer.parseInt(br.readLine());
         ArrayList<Edge>[] graph = new ArrayList[vtces];
-        for(int i = 0; i < vtces; i++){
+        for (int i = 0; i < vtces; i++) {
             graph[i] = new ArrayList<>();
         }
+
         int edges = Integer.parseInt(br.readLine());
-        for(int i = 0; i < edges; i++){
+        for (int i = 0; i < edges; i++) {
             String[] parts = br.readLine().split(" ");
             int v1 = Integer.parseInt(parts[0]);
             int v2 = Integer.parseInt(parts[1]);
@@ -45,36 +38,27 @@ public class HasPath {
         int src = Integer.parseInt(br.readLine());
         int dest = Integer.parseInt(br.readLine());
 
-        /**
-         * Store the Visited Array
-         */
         boolean[] visited = new boolean[vtces];
-        boolean path = hasPath(graph, src, dest, visited);
-        System.out.println(path);
-
-        // write your code here
+        printAllPath(graph, src, dest, visited, src+ "");
     }
 
+    public static void printAllPath(ArrayList<Edge>[] graph, int src, int dest, boolean[] visited, String psf){
 
-    public static boolean hasPath(ArrayList<Edge>[] graph, int src, int dest, boolean[] visited){
         if(src == dest){
-            return true;
+            System.out.println(psf);
+            return;
         }
+
         visited[src] = true;
-
         for(Edge edge: graph[src]){
-            if (!visited[edge.nbr]){
-                boolean nbrHasPath = hasPath(graph, edge.nbr, dest, visited);
-                    if(nbrHasPath){
-                        return  true;
-
-                    }
-
-                }
+            if(!visited[edge.nbr]){
+                printAllPath(graph, edge.nbr, dest, visited, psf+ edge.nbr);
 
             }
+        }
+        visited[src] = false;
 
-
-        return false;
     }
+
+
 }
