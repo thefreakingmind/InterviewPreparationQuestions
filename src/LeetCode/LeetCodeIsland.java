@@ -1,12 +1,16 @@
 package LeetCode;
 
+import java.lang.reflect.Array;
+import java.util.ArrayDeque;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.PriorityQueue;
+
 class Solution {
     public int numIslands(char[][] grid) {
-
-
         int count =0;
-
         int row = grid.length;
+
         int col = grid[0].length;
         boolean[][] visited = new boolean[row][col];
         for(int i=0; i<row; i++){
