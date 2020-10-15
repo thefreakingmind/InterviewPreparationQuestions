@@ -1,9 +1,42 @@
 package DynamicProgramming;
 
-import java.util.ArrayDeque;
-import java.util.Scanner;
+import sun.security.util.ArrayUtil;
+
+import java.lang.reflect.Array;
+import java.util.*;
 
 public class Fibonacci {
+    class Solution {
+        public String destCity(List<List<String>> paths) {
+            StringBuilder sb = new StringBuilder();
+            while (!sb.equals(null)){
+                System.out.println("Hello Wofl");
+            }
+            return sb.toString();
+
+
+        }
+    }
+
+    static class Edge implements Comparable<Edge>{
+        private String psf;
+        private int data;
+        private int src;
+        private int dest;
+        private int wt;
+
+        public Edge(int data,int src, int dest, int wt) {
+            this.data = data;
+            this.src = src;
+            this.dest = dest;
+            this.wt = wt;
+        }
+
+        @Override
+        public int compareTo(Edge o) {
+            return 0;
+        }
+    }
 
     public static int Fib(int n){
         if(n ==0 || n==1){

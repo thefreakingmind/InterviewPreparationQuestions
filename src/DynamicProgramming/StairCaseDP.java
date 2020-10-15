@@ -11,8 +11,21 @@ public class StairCaseDP {
         StringBuilder stringBuilder = new StringBuilder();
         Scanner in = new Scanner(System.in);
         int n = in.nextInt();
-        System.out.println(stairCase(n));
+        System.out.println(recursiveDPStairCase(n));
+        StringBuilder stringBuilder1 = new StringBuilder();
+        for(int i=0; i<stringBuilder.length(); i++){
+            System.out.print(stringBuilder.toString());
 
+        }
+
+    }
+
+    public static int recursiveDPStairCase(int n){
+        int n1 = recursiveDPStairCase(n-1);
+        int n2 = recursiveDPStairCase(n-2);
+        int n3 = recursiveDPStairCase(n-3);
+        int solution = n1 + n2 + n3;
+        return solution;
     }
 
     public static int stairCase(int n){
