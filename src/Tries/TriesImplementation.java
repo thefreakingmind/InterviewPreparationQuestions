@@ -1,15 +1,17 @@
 package Tries;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.lang.reflect.Array;
+import java.util.*;
 
 public class TriesImplementation {
 
+    ArrayDeque<String> arrayDeque = new ArrayDeque<>();
+    private ArrayDeque<String> aq = new ArrayDeque<>();
     private static int Alphabets = 26;
 
     private class Node {
         private char data;
-        Map<Character, Node> childer = new HashMap<>();
+        private Map<Character, Node> children = new HashMap<>();
         private boolean isEndoftheWord;
 
         public Node(char data) {
@@ -22,24 +24,28 @@ public class TriesImplementation {
         }
 
         public boolean hasChild(char character){
-            return childer.containsKey(character);
+            return children.containsKey(character);
         }
 
         public void addChild(char ch){
-            childer.put(ch, new Node(ch));
+            children.put(ch, new Node(ch));
 
         }
 
         public Node getChild(char ch){
-            return childer.get(ch);
+            return children.get(ch);
         }
     }
 
     private boolean containsWord(String word){
+        Node current = root;
         for(Character ch: word.toCharArray()){
-
-
+            if(!current.hasChild(ch)){
+                return false;
+            }
+            current = current.getChild(ch);
         }
+        return current.isEndoftheWord;
     }
 
 
@@ -66,6 +72,7 @@ public class TriesImplementation {
         TriesImplementation trie = new TriesImplementation();
         trie.insert("cat");
         trie.insert("can");
+        trie.insert("canada");
         System.out.println("Done");
     }
 }

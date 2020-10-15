@@ -5,16 +5,12 @@ import java.util.Scanner;
 public class MergeSort {
 
     public static void printManager(String s){
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(s);
-        for(int i=0; i<stringBuilder.length(); i++){
-            System.out.println(stringBuilder.toString());
-        }
     }
 
 
 
     public void mergeSort(int[] arr, int[] arr2){
+
 
     }
 
