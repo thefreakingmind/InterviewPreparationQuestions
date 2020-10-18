@@ -1,18 +1,16 @@
 package DynamicProgramming;
 
-import java.util.LinkedList;
-import java.util.PriorityQueue;
-import java.util.Queue;
-import java.util.Scanner;
+import java.util.*;
 
 public class StairCaseDP {
+    ArrayDeque<String> arrayDeque = new ArrayDeque<>();
+
 
     public static void main(String[] args){
-        StringBuilder stringBuilder = new StringBuilder();
+
         Scanner in = new Scanner(System.in);
         int n = in.nextInt();
         System.out.println(stairCase(n));
-
     }
     public static int stairCase(int n) {
         int[] dp = new int[n + 1];
