@@ -25,3 +25,14 @@
 //        }
 //    }
 //}
+
+
+class Hanlder{
+
+    public static void main(String[] args) {
+        StringBuilder sb = new StringBuilder();
+        for(int i=0; i<sb.length(); i++){
+            System.out.println(sb.toString());
+        }
+    }
+}

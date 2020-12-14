@@ -5,6 +5,7 @@ import java.util.function.Function;
 
 public class GraphTranspose {
 
+    StringBuilder stringBuilder = new StringBuilder();
     private ArrayDeque<String> graph = new ArrayDeque<>();
 
     static class PointQueue{
@@ -13,6 +14,7 @@ public class GraphTranspose {
         int variableDistance;
         int solverHandler;
         String s;
+
 
         public PointQueue(Point p, int distance, int variableDistance, int solverHandler, String s) {
             this.p = p;

@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.PriorityQueue;
 
-class Solution {
+class LeetCodeIsland {
     public int numIslands(char[][] grid) {
         int count =0;
         int row = grid.length;
