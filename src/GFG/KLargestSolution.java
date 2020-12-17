@@ -6,6 +6,9 @@ import java.io.InputStreamReader;
 import java.util.*;
 
 class DijEdge implements Comparable<DijEdge>{
+    Queue<String> queue = new PriorityQueue<>();
+    private StringBuilder stringBuilder;
+
     ArrayDeque<String> arrayDeque = new ArrayDeque<>();
     int n = 10;
     private String[] strings = new String[n];

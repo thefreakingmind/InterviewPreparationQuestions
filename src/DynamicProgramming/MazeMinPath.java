@@ -31,6 +31,7 @@ public class MazeMinPath {
 
                 }
                 else{
+
                     dp[i][j] = Math.min(dp[i+1][j] , dp[i][j+1]) + arr[i][j];
 
                 }
@@ -40,4 +41,7 @@ public class MazeMinPath {
         System.out.println(dp[0][0]);
 
     }
+
+
+
 }

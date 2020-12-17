@@ -7,6 +7,8 @@ public class MaximumSubarray {
 
 
     public static void main(String[] args) {
+        Queue<String> queue = new ArrayDeque<>();
+
         PriorityQueue<String> priorityQueue = new PriorityQueue<>();
 
         StringBuilder stringBuilder = new StringBuilder();
