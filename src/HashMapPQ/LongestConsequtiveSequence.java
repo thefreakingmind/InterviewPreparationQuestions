@@ -1,61 +1,29 @@
-package GenericTrees;
+package HashMapPQ;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
 
-public class GenericTreeBasic {
-
-    static class Node{
-        int data;
-        ArrayList<Node> children = new ArrayList<>();
-    }
-
-
-
+public class LongestConsequtiveSequence {
 
     public static void main(String[] args) {
-        FastScanner in=new FastScanner();
-        int n =in.nextInt();
+        FastScanner in = new FastScanner();
+        int n = in.nextInt();
         int[] arr = in.readArray(n);
-        Node root = null;
-        Stack<Node> stack = new Stack<>();
-        for(int i=0; i<arr.length; i++){
-            if(arr[i] == -1){
-                stack.pop();
-            }
-            Node temp = new Node();
-            temp.data = arr[i];
+        StringBuilder stringBuilder = new StringBuilder();
+        ArrayDeque<String> arrayDeque = new ArrayDeque<>();
+        arrayDeque.addFirst("Hello");
+        arrayDeque.addLast("World");
+        stringBuilder.append(arrayDeque);
+        System.out.println(stringBuilder);
+        Map<String, String> map = new HashMap<>();
+        for(int i=0; i< map.size(); i++){
+            System.out.println(map);
 
-            if(stack.size() > 0){
-                stack.peek().children.add(temp);
-            }else {
-                root = temp;
-            }
-
-            stack.push(temp);
         }
 
 
-
-
-
-
-
-    }
-
-    public static void display(Node node) {
-        String str = node.data + " -> ";
-        for (Node child : node.children) {
-            str += child.data + ", ";
-        }
-        str += ".";
-        System.out.println(str);
-
-        for (Node child : node.children) {
-            display(child);
-        }
     }
 
     static void sort(int[] a) {
