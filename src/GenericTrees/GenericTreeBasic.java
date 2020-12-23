@@ -1,109 +1,89 @@
 package GenericTrees;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.*;
 
 public class GenericTreeBasic {
-
-    static class Node{
+    private static class Node {
         int data;
-        ArrayList<Node> children = new ArrayList<>();
-    }
-
-
-
-
-    public static void main(String[] args) {
-        FastScanner in=new FastScanner();
-        int n =in.nextInt();
-        int[] arr = in.readArray(n);
-        Node root = null;
-        Stack<Node> stack = new Stack<>();
-        for(int i=0; i<arr.length; i++){
-            if(arr[i] == -1){
-                stack.pop();
-            }
-            Node temp = new Node();
-            temp.data = arr[i];
-
-            if(stack.size() > 0){
-                stack.peek().children.add(temp);
-            }else {
-                root = temp;
-            }
-
-            stack.push(temp);
-        }
-
-
-
-
-
-
-
+        ArrayList < Node > children = new ArrayList < > ();
     }
 
     public static void display(Node node) {
         String str = node.data + " -> ";
-        for (Node child : node.children) {
+        for (Node child: node.children) {
             str += child.data + ", ";
         }
         str += ".";
         System.out.println(str);
 
-        for (Node child : node.children) {
+        for (Node child: node.children) {
             display(child);
         }
     }
 
-    static void sort(int[] a) {
-        ArrayList<Integer> l=new ArrayList<>();
-        for (int i:a) l.add(i);
-        Collections.sort(l);
-        for (int i=0; i<a.length; i++) a[i]=l.get(i);
-    }
+    public static Node construct(int[] arr) {
+        Node root = null;
 
-    static void reverse(int a[])
-    {
-        int n = a.length;
-        int[] b = new int[n];
-        int j = n;
-        for (int i = 0; i < n; i++) {
-            b[j - 1] = a[i];
-            j = j - 1;
-        }
-        for(int i=0; i<b.length; i++){
-            a[i] = b[i];
-        }
-    }
+        Stack < Node > st = new Stack < > ();
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == -1) {
+                st.pop();
+            } else {
+                Node t = new Node();
+                t.data = arr[i];
 
-    static class FastScanner {
-        BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st=new StringTokenizer("");
-        String next() {
-            while (!st.hasMoreTokens())
-                try {
-                    st=new StringTokenizer(br.readLine());
-                } catch (IOException e) {
-                    e.printStackTrace();
+                if (st.size() > 0) {
+                    st.peek().children.add(t);
+                } else {
+                    root = t;
                 }
-            return st.nextToken();
+
+                st.push(t);
+            }
         }
 
-        int nextInt() {
-            return Integer.parseInt(next());
-        }
-        int[] readArray(int n) {
-            int[] a=new int[n];
-            for (int i=0; i<n; i++) a[i]=nextInt();
-            return a;
-        }
-        long nextLong() {
-            return Long.parseLong(next());
-        }
+        return root;
     }
 
+    public static int size(Node node) {
+        int s = 0;
+
+        for (Node child: node.children) {
+            s += size(child);
+        }
+        s += 1;
+
+        return s;
+    }
+
+    public static int max(Node node) {
+        int max = Integer.MIN_VALUE;
+        for(Node child: node.children){
+            int cm = max(child);
+            max = Math.max(cm, max);
+        }
+        max = Math.max(node.data, max);
+
+        return max;
+
+
+
+    }
+
+    public static void main(String[] args) throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int n = Integer.parseInt(br.readLine());
+        int[] arr = new int[n];
+        String[] values = br.readLine().split(" ");
+        for (int i = 0; i < n; i++) {
+            arr[i] = Integer.parseInt(values[i]);
+        }
+
+        Node root = construct(arr);
+        int m = max(root);
+        System.out.println(m);
+        // display(root);
+    }
 
 }
